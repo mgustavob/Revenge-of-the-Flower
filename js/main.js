@@ -21,5 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
         snake.update();
         snake.render();
         food.render();
+        detectHit();
     }, 200);
 });
