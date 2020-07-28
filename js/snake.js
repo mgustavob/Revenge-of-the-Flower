@@ -5,13 +5,29 @@ function Crawler(x, y, width, height, color) {
     this.height = height;
     this.xSpeed = 10;
     this.ySpeed = 0;
+    this.body = [];
     this.color = color;
     this.alive = true;
     this.render = function() {
         ctx.fillStyle = this.color;
+
+        for (let i = 0; i < this.body.length; i++) {
+
+            ctx.fillRect(this.body[i].x, this.body[i].y, this.width, this.height);
+            console.log(this.body[i]);
+
+        }
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     this.update = function () {
+
+        for (let i = 0; i < this.body.lengt -1; i++) {
+            console.log(this.body[i]);
+            this.body[i] =this.body[i+1];
+        }
+
+        this.body[totalBody - 1] = {x: this.x, y: this.y};
+
         this.x += this.xSpeed;
         this.y += this.ySpeed;
         // making if so that if it hits a wall it will go arround the other corner
@@ -59,7 +75,9 @@ const detectHit = () => {
           snake.y + snake.height > food.y &&
           snake.y < food.y + food.height) {
           console.log('collision');
-          eatAudio.play();
+          totalBody ++;
+          let numb1 = Math.floor(Math.random() * 4);
+          eatAudio[numb1].play();
           food.alive = false;
           let varX = Math.floor(Math.random() * (game.width - 20));
           let varY = Math.floor(Math.random() * (game.height - 20));

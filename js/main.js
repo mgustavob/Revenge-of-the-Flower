@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // CHARACTER REFS
     food = new Crawler(100, 100, 20, 20, '#bada55');
     snake = new Crawler(20, 20, 20, 20, 'hotpink');
+    score = 
     document.addEventListener('keydown', ((e) => {
        // console.log(e);
         const direct = e.keyCode;
