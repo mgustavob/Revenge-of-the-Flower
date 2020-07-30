@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log('Dom loaded')
     // DOM REFS
     movementDisplay = document.getElementById('movement');
-    let slider = document.getElementById('btm-left');
+
 
     game = document.getElementById('game');
     // CANVAS CONFIG

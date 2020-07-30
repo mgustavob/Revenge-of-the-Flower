@@ -18,28 +18,29 @@ function Crawler(x, y, width, height, image, imgWidth, imgHeight, cols, rows) {
     this.currentFrame = 0;
     this.srcX;
     this.srcY;
+    this.srcY = 0;
 
 
 
 
     this.render = function() {
+
+                // for (let i = 0; i < this.body.length; i++) {
+
+                //     ctx.fillRect(this.body[i].x, this.body[i].y, this.width, this.height);
+                //     console.log(this.body[i]);
+
+                // }
         ctx.drawImage(this.flower, this.srcX, this.srcY, this.spriteWid, this.spriteHei, this.x, this.y, this.spriteWid, this.spriteHei);
+        console.log(this.srcY);
 
-
-
-        // for (let i = 0; i < this.body.length; i++) {
-
-        //     ctx.fillRect(this.body[i].x, this.body[i].y, this.width, this.height);
-        //     console.log(this.body[i]);
-
-        // }
         // //ctx.fillRect(this.x, this.y, this.width, this.height);
     }
     this.update = function () {
 
         this.currentFrame = ++this.currentFrame % this.cols;
         this.srcX = this.currentFrame * this.spriteWid;
-        this.srcY = 1;
+
 
 
         for (let i = 0; i < this.body.lenght -1; i++) {
@@ -71,22 +72,22 @@ function Crawler(x, y, width, height, image, imgWidth, imgHeight, cols, rows) {
             case (38):
                 this.xSpeed = 0;
                 this.ySpeed = -20;
-                this.srcY = 2;
+                this.srcY = 2 * this.spriteHei;
                 break;
             case (40):
                 this.xSpeed = 0;
                 this.ySpeed = 20;
-                this.srcY = 0;
+                this.srcY = 3 * this.spriteHei;
                 break;
             case (37):
                 this.xSpeed = -20;
                 this.ySpeed = 0;
-                this.srcY = 3;
+                this.srcY = 1 * this.spriteHei;
                 break;
             case (39):
                 this.xSpeed = 20;
                 this.ySpeed = 0;
-                this.srcY = 1;
+                this.srcY = 0 * this.spriteHei;
                 break;
           default:
             console.log('invalid keystroke');
@@ -102,12 +103,11 @@ const detectHit = () => {
           snake.y < food.y + food.height) {
           //console.log('collision');
           totalBody ++;
-          score += 100;
-          console.log(score);
+          score1 += 100;
           //score.textContent(score);
           let numb1 = Math.floor(Math.random() * eatAudio.length);
           eatAudio[numb1].play();
-
+          score.textContent = score1;
           food.alive = false;
           let varX = Math.floor(Math.random() * (game.width - 20));
           let varY = Math.floor(Math.random() * (game.height - 20));
