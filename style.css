@@ -19,9 +19,10 @@ html,body {
   }
 
   canvas {
-    /* background-image: url('../img/stone.png'); */
+    background-image: url('mbrossky1.jpg');
+    background-size: 100%;
     /* background-repeat: repeat; */
-    background-color:white;
+    /* background-color:white; */
     /* width: 100%; */
     height: 100;
   }
