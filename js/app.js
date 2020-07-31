@@ -14,6 +14,7 @@ let gameAudio1 = new Audio('sounds/mainGame1.mp3');
 let gameAudio2 = new Audio('sounds/mainGame2.mp3');
 let score = document.getElementById('currentScore');
 let mvp = 0;
+let audioDie1 = new Audio('sounds/die1.wav');
 
 
 //let numb2 = Math.floor(Math.random() * eatAudio.length);

@@ -153,6 +153,7 @@ function gameOver () {
     container2.style.display='block';
     game.style.display='none';
     gameAudio1.pause();
+    audioDie1.play();
     if (score1 > mvp) {
         lastContainer.textContent = 'Congratulations you are the new MVP with: '+score1+' points! Please press Try Again to restart';
         mvp = score1;
