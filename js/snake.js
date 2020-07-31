@@ -9,6 +9,8 @@ function Crawler(x, y, width, height, image, imgWidth, imgHeight, cols, rows) {
     this.alive = true;
     this.flower = new Image();
     this.flower.src = image;
+    this.bodyImg = new Image();
+    this.bodyImg.src = 'body.png';
     this.imgWidth = imgWidth;
     this.imgHeight = imgHeight;
     this.cols = cols;
@@ -27,8 +29,11 @@ function Crawler(x, y, width, height, image, imgWidth, imgHeight, cols, rows) {
     this.render = function() {
 
                 for (let i = 0; i < this.body.length; i++) {
-                    ctx.fillStyle = 'greenyellow';
-                    ctx.fillRect(this.body[i].x, this.body[i].y, this.width, this.height);
+                    //ctx.fillStyle = 'greenyellow';
+                    //ctx.fillRect(this.body[i].x, this.body[i].y, this.width, this.height);
+                    //ctx.drawImage('body.png', this.body[i].x, this.body[i].y, 21, 16, this.x, this.y, 21, 16);
+                    ctx.drawImage(this.flower, this.srcX, this.srcY, this.spriteWid, this.spriteHei, this.body[i].x, this.body[i].y, this.spriteWid, this.spriteHei);
+
                     //console.log(this.body[i]);
 
                 }
