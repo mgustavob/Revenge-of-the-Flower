@@ -27,7 +27,7 @@ function Crawler(x, y, width, height, image, imgWidth, imgHeight, cols, rows) {
     this.render = function() {
 
                 for (let i = 0; i < this.body.length; i++) {
-
+                    ctx.fillStyle = 'greenyellow';
                     ctx.fillRect(this.body[i].x, this.body[i].y, this.width, this.height);
                     //console.log(this.body[i]);
 
@@ -149,13 +149,13 @@ function gameOver () {
     game.style.display='none';
     gameAudio1.pause();
     if (score1 > mvp) {
-        lastContainer.textContent = 'Congratulations you are the new MVP with: '+score1+' Please press Try Again to restart';
+        lastContainer.textContent = 'Congratulations you are the new MVP with: '+score1+' points! Please press Try Again to restart';
         mvp = score1;
         mvp1.textContent = mvp;
 
     }
      else if (score1 < mvp) {
-        lastContainer.textContent = 'Better Luck next time, your score of: '+score1+' falls short to the massive MVP score of: '+mvp+' Please press try again to restart';
+        lastContainer.textContent = 'Better Luck next time, your score of: '+score1+' points falls short to the massive MVP score of: '+mvp+' points! Please press try again to restart';
 
     }
     clearInterval(intervalId);
@@ -193,7 +193,7 @@ const detectHit = () => {
           food.alive = false;
           let varX = Math.floor(Math.random() * (game.width - 20));
           let varY = Math.floor(Math.random() * (game.height - 20));
-          food = new Food(varX, varY, 20, 20, 'enemy1.png', 138, 37, 5, 1);
+          food = new Food(varX, varY, 20, 20, 'mario1.png', 181, 29, 9, 1);
 
         }
   }

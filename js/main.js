@@ -1,5 +1,5 @@
 movementDisplay = document.getElementById('movement');
-
+//
 container1 = document.getElementById('container1');
 container2 = document.getElementById('container2');
 start = document.getElementById('start');
@@ -22,7 +22,7 @@ function gameStart() {
     container1.style.display='none';
     container2.style.display='none';
     game.style.display='block';
-    food = new Food(100, 100, 20, 20, 'enemy1.png', 138, 37, 5, 1);
+    food = new Food(100, 100, 20, 20, 'mario1.png', 181, 29, 9, 1);
     snake = new Crawler(20, 20, 20, 20, 'flowerHead.png', 40, 80, 2, 4);
 
     document.addEventListener('keydown', ((e) => {
