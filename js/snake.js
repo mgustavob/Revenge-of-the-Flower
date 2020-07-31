@@ -23,16 +23,17 @@ function Crawler(x, y, width, height, image, imgWidth, imgHeight, cols, rows) {
 
 
 
+
     this.render = function() {
 
-                // for (let i = 0; i < this.body.length; i++) {
+                for (let i = 0; i < this.body.length; i++) {
 
-                //     ctx.fillRect(this.body[i].x, this.body[i].y, this.width, this.height);
-                //     console.log(this.body[i]);
+                    ctx.fillRect(this.body[i].x, this.body[i].y, this.width, this.height);
+                    //console.log(this.body[i]);
 
-                // }
+                }
         ctx.drawImage(this.flower, this.srcX, this.srcY, this.spriteWid, this.spriteHei, this.x, this.y, this.spriteWid, this.spriteHei);
-        console.log(this.srcY);
+       // console.log(this.srcY);
 
         // //ctx.fillRect(this.x, this.y, this.width, this.height);
     }
@@ -41,10 +42,11 @@ function Crawler(x, y, width, height, image, imgWidth, imgHeight, cols, rows) {
         this.currentFrame = ++this.currentFrame % this.cols;
         this.srcX = this.currentFrame * this.spriteWid;
 
+        //this.gameOver ();
 
 
-        for (let i = 0; i < this.body.lenght -1; i++) {
-            console.log(this.body[i]);
+        for (let i = 0; i < this.body.length -1; i++) {
+            //console.log(this.body[i]);
             this.body[i] =this.body[i+1];
         }
 
@@ -70,30 +72,110 @@ function Crawler(x, y, width, height, image, imgWidth, imgHeight, cols, rows) {
         switch (direct) {
 
             case (38):
+                if (this.ySpeed != -20) {
                 this.xSpeed = 0;
                 this.ySpeed = -20;
-                this.srcY = 2 * this.spriteHei;
+                this.srcY = 2 * this.spriteHei;}
                 break;
             case (40):
+                if (this.ySpeed != 20) {
                 this.xSpeed = 0;
                 this.ySpeed = 20;
-                this.srcY = 3 * this.spriteHei;
+                this.srcY = 3 * this.spriteHei; }
                 break;
             case (37):
+                if (this.xSpeed != -20) {
                 this.xSpeed = -20;
                 this.ySpeed = 0;
-                this.srcY = 1 * this.spriteHei;
+                this.srcY = 1 * this.spriteHei; }
                 break;
             case (39):
+                if (this.xSpeed != 20) {
                 this.xSpeed = 20;
                 this.ySpeed = 0;
-                this.srcY = 0 * this.spriteHei;
+                this.srcY = 0 * this.spriteHei; }
                 break;
           default:
             console.log('invalid keystroke');
       }
-          }
     }
+}
+
+
+function Food(x, y, width, height, image, imgWidth, imgHeight, cols, rows) {
+    this.x = x;
+    this.y = y;
+    this.width = width;
+    this.height = height;
+    this.xSpeed = 0;
+    this.ySpeed = 0;
+    this.alive = true;
+    this.flower = new Image();
+    this.flower.src = image;
+    this.imgWidth = imgWidth;
+    this.imgHeight = imgHeight;
+    this.cols = cols;
+    this.rows = rows;
+    this.spriteWid = imgWidth / cols;
+    this.spriteHei = imgHeight / rows;
+    this.currentFrame = 0;
+    this.srcX;
+    this.srcY;
+    this.srcY = 0;
+
+
+
+
+
+    this.render = function() {
+
+        ctx.drawImage(this.flower, this.srcX, this.srcY, this.spriteWid, this.spriteHei, this.x, this.y, this.spriteWid, this.spriteHei);
+       // console.log(this.srcY);
+
+        // //ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+    this.update = function () {
+
+        this.currentFrame = ++this.currentFrame % this.cols;
+        this.srcX = this.currentFrame * this.spriteWid;
+    }
+}
+
+
+
+function gameOver () {
+    container1.style.display='none';
+    container2.style.display='block';
+    game.style.display='none';
+    gameAudio1.pause();
+    if (score1 > mvp) {
+        lastContainer.textContent = 'Congratulations you are the new MVP with: '+score1+' Please press Try Again to restart';
+        mvp = score1;
+        mvp1.textContent = mvp;
+
+    }
+     else if (score1 < mvp) {
+        lastContainer.textContent = 'Better Luck next time, your score of: '+score1+' falls short to the massive MVP score of: '+mvp+' Please press try again to restart';
+
+    }
+    clearInterval(intervalId);
+    snake.Alive = false;
+    snake.body = null;
+}
+
+const detectSnakeBody = () => {
+    for (let i = 0; i < snake.body.length; i++) {
+        if (snake.x === snake.body[i].x &&
+          snake.y === snake.body[i].y) {
+            gameActive = false
+            gameOver();
+            //return gameActive;
+          }
+
+    }
+}
+
+
 
 const detectHit = () => {
     //check for colission on x axis
@@ -111,7 +193,7 @@ const detectHit = () => {
           food.alive = false;
           let varX = Math.floor(Math.random() * (game.width - 20));
           let varY = Math.floor(Math.random() * (game.height - 20));
-          food = new Crawler(varX, varY, 20, 20, 'enemy1.png', 138, 37, 5, 1);
+          food = new Food(varX, varY, 20, 20, 'enemy1.png', 138, 37, 5, 1);
 
-      }
+        }
   }

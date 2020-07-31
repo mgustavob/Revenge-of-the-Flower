@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap');
 html,body {
-    margin: 0;
+    margin: 0 auto;
     padding: 0;
   }
 
   body {
+    background-image: url('thflowback.jpeg');
     padding-top: 1em;
     text-align: center;
     background-color:yellowgreen;
@@ -12,10 +14,11 @@ html,body {
     background-repeat: space;
   }
 
-  h1, h2 {
-    font-family: 'Press Start 2P', monospace;
-    /* font-family: monospace; */
-    color: black;
+  h2 {
+    font-family: 'Permanent Marker', cursive;
+    color: blue;
+    font-size: 38px;
+    text-align: center;
   }
 
   canvas {
@@ -24,13 +27,13 @@ html,body {
     /* background-repeat: repeat; */
     /* background-color:white; */
     /* width: 100%; */
-    height: 100;
+    /* height: 100; */
   }
 
   #container {
   max-width: 50em;
   /* height: 70vh; */
-  background-color: mediumseagreen;
+  /* background-color: mediumseagreen; */
   margin: 0 auto;
   padding: 1em;
   display: grid;
@@ -41,20 +44,28 @@ html,body {
                         "game game game"
                         "btm-left btm-right btm-right";
   }
+  #container1, #container2 {
+    height: 400px;
+    width: 500px;
+  }
 
   #top-left, #top-right, #btm-left, #btm-right {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
   }
 
   #top-left {
     grid-area: top-left;
+    background-image: url('https://fontmeme.com/permalink/200730/22b6869226753807a4da221a3d9c6605.png');
+    background-size: 100%;
+    height: 47px;
   }
 
   #top-right {
     grid-area: top-right;
+
     /* background-color: #222; */
     /* background-image: url('../img/funky-lines.png'); */
   }
